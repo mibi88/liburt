@@ -1,0 +1,235 @@
+                                LIBURT
+                               by Mibi88
+
+A highly portable, easy to compile, drop-in replacement for libgcc or
+compiler-rt.
+
+It is currently far from being finished.
+
+I'm making it to replace the libgcc parts I use in PhosphoreEngine. I had a lot
+of trouble trying to compile libgcc or compiler-rt for RISC V so I decided to
+make my own library.
+
+    BUILDING
+
+Currently my build script only supports compiling with clang, but it is very
+easy to write another build script: all the source files are in `src' and use
+headers in `src' and in `inc'.
+
+The following defines can be passed as 1 to enable some of liburt's features
+
+URT_NONANSI     Support some non-ansi C subroutines
+URT_HASLIBC     Use stdlib functions when needed, instead of some, sometimes
+                quite chaotic replacement functions/macros, to handle, e.g.
+                exceptions.
+
+    IMPLEMENTED LIBGCC SUBROUTINES
+
+Subroutines marked with a cross are implemented. Others will be implemented
+soon.
+
+Integer subroutines
+
+[x] __ashlsi3
+[x] __ashldi3
+[x] __ashlti3
+[x] __ashrsi3
+[x] __ashrdi3
+[x] __ashrti3
+[x] __divsi3
+[x] __divdi3
+[x] __divti3
+[x] __lshrsi3
+[x] __lshrdi3
+[x] __lshrti3
+[x] __modsi3
+[x] __moddi3
+[x] __modti3
+[x] __mulsi3
+[x] __muldi3
+[x] __multi3
+[x] __negdi2
+[x] __negti2
+[x] __udivsi3
+[x] __udivdi3
+[x] __udivti3
+[x] __udivmoddi4
+[x] __udivmodti4
+[x] __umodsi3
+[x] __umoddi3
+[x] __umodti3
+[ ] __cmpdi2
+[ ] __cmpti2
+[ ] __ucmpdi2
+[ ] __ucmpti2
+[ ] __absvsi2
+[ ] __absvdi2
+[ ] __addvsi3
+[ ] __addvdi3
+[ ] __mulvsi3
+[ ] __mulvdi3
+[ ] __negvsi2
+[ ] __negvdi2
+[ ] __subvsi3
+[ ] __subvdi3
+[ ] __clzsi2
+[ ] __clzdi2
+[ ] __clzti2
+[ ] __ctzsi2
+[ ] __ctzdi2
+[ ] __ctzti2
+[ ] __ffsdi2
+[ ] __ffsti2
+[ ] __paritysi2
+[ ] __paritydi2
+[ ] __parityti2
+[ ] __popcountsi2
+[ ] __popcountdi2
+[ ] __popcountti2
+[ ] __bswapsi2
+[ ] __bswapdi2
+[ ] __mulbitint3
+[ ] __divmodbitint4
+
+Floating-point subroutines
+
+[ ] __addsf3
+[ ] __adddf3
+[ ] __addtf3
+[ ] __addxf3
+[ ] __subsf3
+[ ] __subdf3
+[ ] __subtf3
+[ ] __subxf3
+[ ] __mulsf3
+[ ] __muldf3
+[ ] __multf3
+[ ] __mulxf3
+[ ] __divsf3
+[ ] __divdf3
+[ ] __divtf3
+[ ] __divxf3
+[ ] __negsf2
+[ ] __negdf2
+[ ] __negtf2
+[ ] __negxf2
+[ ] __extendsfdf2
+[ ] __extendsftf2
+[ ] __extendsfxf2
+[ ] __extenddftf2
+[ ] __extenddfxf2
+[ ] __truncxfdf2
+[ ] __trunctfdf2
+[ ] __truncxfsf2
+[ ] __trunctfsf2
+[ ] __truncdfsf2
+[ ] __fixsfsi
+[ ] __fixdfsi
+[ ] __fixtfsi
+[ ] __fixxfsi
+[ ] __fixsfdi
+[ ] __fixdfdi
+[ ] __fixtfdi
+[ ] __fixxfdi
+[ ] __fixsfti
+[ ] __fixdfti
+[ ] __fixtfti
+[ ] __fixxfti
+[ ] __fixunssfsi
+[ ] __fixunsdfsi
+[ ] __fixunstfsi
+[ ] __fixunsxfsi
+[ ] __fixunssfdi
+[ ] __fixunsdfdi
+[ ] __fixunstfdi
+[ ] __fixunsxfdi
+[ ] __fixunssfti
+[ ] __fixunsdfti
+[ ] __fixunstfti
+[ ] __fixunsxfti
+[ ] __floatsisf
+[ ] __floatsidf
+[ ] __floatsitf
+[ ] __floatsixf
+[ ] __floatdisf
+[ ] __floatdidf
+[ ] __floatditf
+[ ] __floatdixf
+[ ] __floattisf
+[ ] __floattidf
+[ ] __floattitf
+[ ] __floattixf
+[ ] __floatunsisf
+[ ] __floatunsidf
+[ ] __floatunsitf
+[ ] __floatunsixf
+[ ] __floatundisf
+[ ] __floatundidf
+[ ] __floatunditf
+[ ] __floatundixf
+[ ] __floatuntisf
+[ ] __floatuntidf
+[ ] __floatuntitf
+[ ] __floatuntixf
+[ ] __fixsfbitint
+[ ] __fixdfbitint
+[ ] __fixxfbitint
+[ ] __fixtfbitint
+[ ] __floatbitintsf
+[ ] __floatbitintdf
+[ ] __floatbitintxf
+[ ] __floatbitinttf
+[ ] __floatbitinthf
+[ ] __floatbitintbf
+[ ] __cmpsf2
+[ ] __cmpdf2
+[ ] __cmptf2
+[ ] __unordsf2
+[ ] __unorddf2
+[ ] __unordtf2
+[ ] __eqsf2
+[ ] __eqdf2
+[ ] __eqtf2
+[ ] __nesf2
+[ ] __nedf2
+[ ] __netf2
+[ ] __gesf2
+[ ] __gedf2
+[ ] __getf2
+[ ] __ltsf2
+[ ] __ltdf2
+[ ] __lttf2
+[ ] __lesf2
+[ ] __ledf2
+[ ] __letf2
+[ ] __gtsf2
+[ ] __gtdf2
+[ ] __gttf2
+[ ] __powisf2
+[ ] __powidf2
+[ ] __powitf2
+[ ] __powixf2
+[ ] __mulsc3
+[ ] __muldc3
+[ ] __multc3
+[ ] __mulxc3
+[ ] __divsc3
+[ ] __divdc3
+[ ] __divtc3
+[ ] __divxc3
+
+Decimal floating point subroutines
+
+    I'm not sure if I'll implement them...
+
+Fixed-point fractional emulation
+
+    I'm not sure if I'll implement them...
+
+Language-independant subroutines for exception handling
+
+    I probably won't implement them...
+
+Miscellaneous subroutines
+
+    I probably won't implement them...
